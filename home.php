@@ -1,15 +1,24 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Set cookies that will last for 30 days
+    setcookie("last_username", $_POST["username"], time() + (86400 * 30), "/");
+    setcookie("last_school", $_POST["school"], time() + (86400 * 30), "/");
+    
+    // Session variables remain the same
     $_SESSION["firstname"] = $_POST["firstname"];
     $_SESSION["lastname"] = $_POST["lastname"];
     $_SESSION["course"] = $_POST["course"];
     $_SESSION["school"] = $_POST["school"];
     $_SESSION["username"] = $_POST["username"];
-    $_SESSION["password"] = $_POST["password"]; // 🚨 Don't store raw passwords in real apps!
+    $_SESSION["password"] = $_POST["password"];
     header("Location: personal.php");
     exit();
 }
+
+// Pre-fill form if cookies exist
+$last_username = isset($_COOKIE["last_username"]) ? $_COOKIE["last_username"] : "";
+$last_school = isset($_COOKIE["last_school"]) ? $_COOKIE["last_school"] : "";
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         button[type="submit"] {
-            background: linear-gradient(90deg, #0ff, #00f);
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
             color: white;
             border: none;
             padding: 0.75rem;
@@ -109,14 +118,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="form-container">
         <h2>Registration Form</h2>
         <form method="POST">
-            <input type="text" name="firstname" placeholder="First Name" required>
-            <input type="text" name="lastname" placeholder="Last Name" required>
-            <input type="text" name="course" placeholder="Course" required>
-            <input type="text" name="school" placeholder="School" required>
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="firstname" placeholder="enter first name" required>
+            <input type="text" name="lastname" placeholder="enter last name" required>
+            <input type="text" name="course" placeholder="enter course" required>
+            <input type="text" name="school" placeholder="enter school" value="<?= htmlspecialchars($last_school) ?>" required>
+            <input type="text" name="username" placeholder="enter username" value="<?= htmlspecialchars($last_username) ?>" required>
+            <input type="password" name="password" placeholder="enter password" required>
             <button type="submit">Register</button>
-        </form>
+    </form>
     </div>
 </body>
 </html>

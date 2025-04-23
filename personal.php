@@ -16,64 +16,85 @@ if (!isset($_SESSION["username"])) {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4f8;
+            background: linear-gradient(45deg, #0a0a2e, #1a1a3a);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #fff;
         }
 
         .info-container {
-            background: white;
+            background: rgba(16, 16, 32, 0.9);
             padding: 2.5rem 3rem;
             border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
+                        0 0 40px rgba(0, 255, 255, 0.1);
             width: 100%;
             max-width: 500px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         h2 {
             text-align: center;
             margin-bottom: 1.5rem;
-            color: #333;
+            color: #0ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         p {
             font-size: 1rem;
-            margin: 0.5rem 0;
-            color: #555;
+            margin: 0.8rem 0;
+            color: #b4b4ff;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            padding-bottom: 0.8rem;
         }
 
         strong {
-            color: #000;
+            color: #0ff;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             margin-top: 2rem;
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
         }
 
         .nav-links a {
-            background-color: #28a745;
-            color: white;
-            padding: 0.5rem 1.2rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            color: #000;
+            padding: 0.8rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
         }
 
         .nav-links a:hover {
-            background-color: #218838;
+            background: linear-gradient(90deg, #00f, #0ff);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         .nav-links a:last-child {
-            background-color: #dc3545;
+            background: linear-gradient(45deg,	#ff8099, #ff4081);
         }
 
         .nav-links a:last-child:hover {
-            background-color: #c82333;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.5);
         }
     </style>
 </head>
